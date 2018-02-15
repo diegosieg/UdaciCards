@@ -12,7 +12,7 @@ const Tabs = TabNavigator(
     DecksList: {
       screen: DecksList,
       navigationOptions: {
-        tabBarLabel: 'Decks List',
+        tabBarLabel: 'My Decks',
         tabBarIcon: ({ tintColor }) => (
           <Ionicons name="ios-browsers-outline" size={30} color={tintColor} />
         ),
@@ -77,5 +77,6 @@ export default class App extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor: white,
   },
 });

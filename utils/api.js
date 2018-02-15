@@ -28,11 +28,15 @@ let initData = {
   },
 };
 
-function formatDeckResults(results) {
+function finalDeckResults(results) {
   return results === null ? setInitData() : JSON.parse(results);
 }
 
+export function fetchData() {
+  return AsyncStorage.getItem(UDACICARDS_STORAGE_KEY).then(finalDeckResults);
+}
+
 function setInitData() {
-  AsyncStorage.setItem(STORAGE_KEY, JSON.stringify(initData));
+  AsyncStorage.setItem(UDACICARDS_STORAGE_KEY, JSON.stringify(initData));
   return initData;
 }
