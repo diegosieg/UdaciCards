@@ -40,11 +40,11 @@ class DecksList extends Component {
       <ScrollView style={styles.container}>
         {Object.keys(myDecks).map(item => {
           return (
-            <View style={styles.deckBox} key={myDecks[item].title}>
+            <View key={myDecks[item].title}>
               <TouchableOpacity
                 onPress={() => this.navigateToDeckItem(myDecks[item].title)}
               >
-                <View>
+                <View style={styles.deckBox}>
                   <Text style={styles.title}>{myDecks[item].title}</Text>
                   <Text style={styles.cardsQtd}>
                     {formatQuestionsLength(myDecks[item].questions.length)}
