@@ -36,6 +36,19 @@ export function fetchData() {
   return AsyncStorage.getItem(UDACICARDS_STORAGE_KEY).then(finalDeckResults);
 }
 
+export function addNewDeckTitle(title, key) {
+  console.log('title', title);
+  return AsyncStorage.mergeItem(
+    UDACICARDS_STORAGE_KEY,
+    JSON.stringify({
+      [title]: {
+        title,
+        questions: [],
+      },
+    }),
+  );
+}
+
 function setInitData() {
   AsyncStorage.setItem(UDACICARDS_STORAGE_KEY, JSON.stringify(initData));
   return initData;
