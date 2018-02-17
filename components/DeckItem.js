@@ -4,7 +4,15 @@ import { getDeckItem } from '../utils/api';
 import { formatQuestionsLength } from '../utils/helpers';
 import { MainButton } from './MainButton';
 import { NavigationActions } from 'react-navigation';
-import { white, purple, pink, orange, gray } from '../utils/colors';
+import {
+  white,
+  purple,
+  pink,
+  orange,
+  blue,
+  gray,
+  black,
+} from '../utils/colors';
 
 class DeckItem extends Component {
   constructor(props) {
@@ -33,8 +41,25 @@ class DeckItem extends Component {
         <Text style={styles.cardsQtd}>
           {formatQuestionsLength(deck.questions.length)}
         </Text>
-        {/* <MainButton onPress>
-      </MainButton> */}
+        <MainButton
+          style={styles.addBtn}
+          onPress={() => this.addNewCard(deck.title)}
+        >
+          Add Card
+        </MainButton>
+        {deck.questions.length > 0 ? (
+          <MainButton
+            style={styles.quizBtn}
+            onPress={() => pthis.startQuiz(props.deckTitle)}
+          >
+            Start Quiz
+          </MainButton>
+        ) : (
+          <Text style={styles.message}>
+            There is no cards in this deck yet. To start a quiz, please add one
+            or more cards.
+          </Text>
+        )}
       </View>
     );
   }
@@ -59,6 +84,24 @@ const styles = StyleSheet.create({
     fontSize: 18,
     textAlign: 'center',
     color: gray,
+    marginBottom: 20,
+  },
+  addBtn: {
+    backgroundColor: blue,
+    marginLeft: 40,
+    marginRight: 40,
+  },
+  quizBtn: {
+    backgroundColor: orange,
+    marginLeft: 40,
+    marginRight: 40,
+  },
+  message: {
+    fontSize: 14,
+    textAlign: 'center',
+    marginTop: 40,
+    marginLeft: 40,
+    marginRight: 40,
   },
 });
 
