@@ -6,3 +6,4 @@ export const orange = '#ffa801';
 export const blue = '#3c40c6';
 export const lightPurp = '#7c53c3';
 export const pink = '#f53b57';
+export const lightGray = '#fbfbfb';

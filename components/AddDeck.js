@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import {
   View,
+  KeyboardAvoidingView,
   Text,
   StyleSheet,
   Platform,
@@ -39,7 +40,7 @@ class AddDeck extends Component {
   render() {
     const { inputText } = this.state;
     return (
-      <View style={styles.container}>
+      <KeyboardAvoidingView behavior="padding" style={styles.container}>
         <Text style={styles.mainContent}>
           What is the title of your new deck?
         </Text>
@@ -52,7 +53,7 @@ class AddDeck extends Component {
           />
           <MainButton onPress={this.createNewDeck}>Create Deck</MainButton>
         </View>
-      </View>
+      </KeyboardAvoidingView>
     );
   }
 }
@@ -75,9 +76,9 @@ const styles = StyleSheet.create({
   input: {
     height: 40,
     width: 300,
-    borderColor: gray,
-    borderRadius: 3,
-    borderWidth: 1,
+    borderColor: Platform.OS === 'ios' ? gray : white,
+    borderRadius: Platform.OS === 'ios' ? 3 : 0,
+    borderWidth: Platform.OS === 'ios' ? 1 : 0,
     paddingLeft: 8,
     paddingRight: 8,
     paddingTop: 4,

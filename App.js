@@ -6,6 +6,7 @@ import { Ionicons } from '@expo/vector-icons';
 import { white, purple, pink } from './utils/colors';
 import DecksList from './components/DecksList';
 import AddDeck from './components/AddDeck';
+import DeckItem from './components/DeckItem';
 
 const Tabs = TabNavigator(
   {
@@ -40,9 +41,9 @@ const Tabs = TabNavigator(
         shadowColor: 'rgba(0, 0, 0, 0.24)',
         shadowOffset: {
           width: 0,
-          height: 3,
+          height: 4,
         },
-        shadowRadius: 6,
+        shadowRadius: 5,
         shadowOpacity: 1,
       },
     },
@@ -52,6 +53,15 @@ const Tabs = TabNavigator(
 const MainNavigator = StackNavigator({
   MainView: {
     screen: Tabs,
+  },
+  DeckItem: {
+    screen: DeckItem,
+    navigationOptions: {
+      headerTintColor: white,
+      headerStyle: {
+        backgroundColor: pink,
+      },
+    },
   },
 });
 
