@@ -13,9 +13,12 @@ import { MainButton } from './MainButton';
 import { white, purple, pink, gray } from '../utils/colors';
 
 class AddDeck extends Component {
-  state = {
-    inputText: '',
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      inputText: '',
+    };
+  }
 
   createNewDeck = () => {
     return addNewDeckTitle(this.state.inputText).then(
@@ -34,6 +37,7 @@ class AddDeck extends Component {
   };
 
   render() {
+    const { inputText } = this.state;
     return (
       <View style={styles.container}>
         <Text style={styles.mainContent}>
@@ -43,7 +47,7 @@ class AddDeck extends Component {
           <TextInput
             style={styles.input}
             onChangeText={inputText => this.setState({ inputText })}
-            value={this.state.inputText}
+            value={inputText}
             placeholder={'An awesome title!'}
           />
           <MainButton onPress={this.createNewDeck}>Create Deck</MainButton>

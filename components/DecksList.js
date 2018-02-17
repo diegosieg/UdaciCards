@@ -11,9 +11,12 @@ import { fetchData } from '../utils/api';
 import { white, purple, pink } from '../utils/colors';
 
 class DecksList extends Component {
-  state = {
-    myDecks: {},
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      myDecks: {},
+    };
+  }
 
   componentDidMount() {
     fetchData().then(results => {
