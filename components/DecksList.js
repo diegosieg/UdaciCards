@@ -35,27 +35,27 @@ class DecksList extends Component {
     const { myDecks } = this.state;
 
     return (
-      // <View >
       <ScrollView style={styles.container}>
-        <Text style={styles.appLogo}>UdaciCards</Text>
-        {Object.keys(myDecks).map(item => {
-          return (
-            <View key={myDecks[item].title}>
-              <TouchableOpacity
-                onPress={() => this.navigateToDeckItem(myDecks[item].title)}
-              >
-                <View style={styles.deckBox}>
-                  <Text style={styles.title}>{myDecks[item].title}</Text>
-                  <Text style={styles.cardsQtd}>
-                    {formatQuestionsLength(myDecks[item].questions.length)}
-                  </Text>
-                </View>
-              </TouchableOpacity>
-            </View>
-          );
-        })}
+        <View style={{ marginBottom: 40 }}>
+          <Text style={styles.appLogo}>UdaciCards</Text>
+          {Object.keys(myDecks).map(item => {
+            return (
+              <View key={myDecks[item].title}>
+                <TouchableOpacity
+                  onPress={() => this.navigateToDeckItem(myDecks[item].title)}
+                >
+                  <View style={styles.deckBox}>
+                    <Text style={styles.title}>{myDecks[item].title}</Text>
+                    <Text style={styles.cardsQtd}>
+                      {formatQuestionsLength(myDecks[item].questions.length)}
+                    </Text>
+                  </View>
+                </TouchableOpacity>
+              </View>
+            );
+          })}
+        </View>
       </ScrollView>
-      // </View>
     );
   }
 }
