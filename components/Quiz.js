@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { StyleSheet, Text, View, ScrollView, Animated } from 'react-native';
 import { MainButton } from './MainButton';
 import { getDeckItem } from '../utils/api';
+import { setLocalNotification, clearLocalNotification } from '../utils/helpers';
 import { NavigationActions } from 'react-navigation';
 import { white, purple, green, red, blue, pink, orange } from '../utils/colors';
 
@@ -46,6 +47,7 @@ class Quiz extends Component {
       this.setState(() => ({ cardCurrentNumber: cardCurrentNumber }));
     } else {
       this.setState(() => ({ endOfQuiz: true }));
+      clearLocalNotification().then(setLocalNotification);
     }
   };
 

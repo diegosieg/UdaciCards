@@ -61,7 +61,6 @@ class AddDeck extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: white,
     alignItems: 'center',
     justifyContent: 'center',
   },
@@ -76,6 +75,7 @@ const styles = StyleSheet.create({
   input: {
     height: 40,
     width: 300,
+    backgroundColor: Platform.OS === 'ios' ? white : 'transparent',
     borderColor: Platform.OS === 'ios' ? gray : white,
     borderRadius: Platform.OS === 'ios' ? 3 : 0,
     borderWidth: Platform.OS === 'ios' ? 1 : 0,
