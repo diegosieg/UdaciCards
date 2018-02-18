@@ -7,6 +7,8 @@ import { white, purple, pink } from './utils/colors';
 import DecksList from './components/DecksList';
 import AddDeck from './components/AddDeck';
 import DeckItem from './components/DeckItem';
+import AddNewCard from './components/AddNewCard';
+import Quiz from './components/Quiz';
 
 const Tabs = TabNavigator(
   {
@@ -56,6 +58,24 @@ const MainNavigator = StackNavigator({
   },
   DeckItem: {
     screen: DeckItem,
+    navigationOptions: {
+      headerTintColor: white,
+      headerStyle: {
+        backgroundColor: pink,
+      },
+    },
+  },
+  Quiz: {
+    screen: Quiz,
+    navigationOptions: {
+      headerTintColor: white,
+      headerStyle: {
+        backgroundColor: pink,
+      },
+    },
+  },
+  AddNewCard: {
+    screen: AddNewCard,
     navigationOptions: {
       headerTintColor: white,
       headerStyle: {

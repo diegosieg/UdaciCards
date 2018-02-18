@@ -27,7 +27,6 @@ class DecksList extends Component {
   }
 
   navigateToDeckItem(item) {
-    console.log(item);
     const { navigate } = this.props.navigation;
     return navigate('DeckItem', { item });
   }

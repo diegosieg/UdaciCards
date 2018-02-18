@@ -54,6 +54,14 @@ export function addNewDeckTitle(title, key) {
   );
 }
 
+export function addNewCardToDeck(title, content) {
+  return AsyncStorage.getItem(UDACICARDS_STORAGE_KEY).then(data => {
+    decks = JSON.parse(data);
+    decks[title].questions.push(content);
+    AsyncStorage.setItem(UDACICARDS_STORAGE_KEY, JSON.stringify(decks));
+  });
+}
+
 function setInitData() {
   AsyncStorage.setItem(UDACICARDS_STORAGE_KEY, JSON.stringify(initData));
   return initData;

@@ -19,6 +19,7 @@ class DeckItem extends Component {
     super(props);
     this.state = {
       deck: { questions: [] },
+      opacity: new Animated.Value(0),
     };
   }
 
@@ -27,16 +28,39 @@ class DeckItem extends Component {
   });
 
   componentDidMount() {
-    getDeckItem(this.props.navigation.state.params.item).then(results =>
-      this.setState(() => ({ deck: results })),
-    );
+    const { opacity } = this.state;
+    getDeckItem(this.props.navigation.state.params.item)
+      .then(results => this.setState(() => ({ deck: results })))
+      .then(() =>
+        Animated.timing(opacity, { toValue: 1, duration: 800 }).start(),
+      );
   }
 
+  startQuiz = item => {
+    const { navigate } = this.props.navigation;
+    return navigate('Quiz', { item });
+  };
+
+  handleNavigationBackToItem = content => {
+    const newDeck = this.state.deck;
+    newDeck.questions.push(content);
+    this.setState(() => ({ deck: newDeck }));
+  };
+
+  addNewCard = item => {
+    const { navigate } = this.props.navigation;
+    console.log(item);
+    return navigate('AddNewCard', {
+      item,
+      navBack: this.handleNavigationBackToItem,
+    });
+  };
+
   render() {
-    const { deck } = this.state;
+    const { deck, opacity } = this.state;
 
     return (
-      <View>
+      <Animated.View style={[styles.container, { opacity }]}>
         <Text style={styles.title}>{deck.title}</Text>
         <Text style={styles.cardsQtd}>
           {formatQuestionsLength(deck.questions.length)}
@@ -50,7 +74,7 @@ class DeckItem extends Component {
         {deck.questions.length > 0 ? (
           <MainButton
             style={styles.quizBtn}
-            onPress={() => pthis.startQuiz(props.deckTitle)}
+            onPress={() => this.startQuiz(deck.title)}
           >
             Start Quiz
           </MainButton>
@@ -60,7 +84,7 @@ class DeckItem extends Component {
             or more cards.
           </Text>
         )}
-      </View>
+      </Animated.View>
     );
   }
 }
@@ -69,7 +93,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: 'center',
-    justifyContent: 'center',
+    //justifyContent: 'center',
   },
   title: {
     fontSize: 32,
