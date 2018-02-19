@@ -86,7 +86,15 @@ class Quiz extends Component {
       <Animated.View style={[styles.container, { opacity }]}>
         <View style={styles.scoreBox}>
           <Text style={styles.scoreContent}>
-            You scored {`${counter / deck.questions.length * 100}%`}
+            You scored{' '}
+            {`${parseFloat(
+              (counter / deck.questions.length * 100).toFixed(2),
+            )}%`}
+          </Text>
+          <Text style={styles.scoreMessage}>
+            {counter / deck.questions.length * 100 >= 75
+              ? "That's awesome! Keep doing this great work!"
+              : 'Oh, that was not so good, perhaps you should try it again soon!'}
           </Text>
         </View>
         <MainButton
@@ -204,6 +212,15 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     color: pink,
     textAlign: 'center',
+  },
+  scoreMessage: {
+    fontSize: 18,
+    fontWeight: 'bold',
+    color: purple,
+    textAlign: 'center',
+    marginTop: 10,
+    marginLeft: 30,
+    marginRight: 30,
   },
   optionsBox: {
     marginTop: 40,
