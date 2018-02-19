@@ -43,7 +43,6 @@ class AddNewCard extends Component {
   }
 
   addNewCard = title => {
-    //console.log(title);
     const content = {
       question: this.state.question,
       answer: this.state.answer,

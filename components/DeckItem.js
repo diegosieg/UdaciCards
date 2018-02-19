@@ -49,7 +49,7 @@ class DeckItem extends Component {
 
   addNewCard = item => {
     const { navigate } = this.props.navigation;
-    console.log(item);
+
     return navigate('AddNewCard', {
       item,
       navBack: this.handleNavigationBackToItem,
