@@ -27,14 +27,17 @@ class AddDeck extends Component {
     );
   };
 
-  navigateToDeckItem = name => {
+  navigateToDeckItem = item => {
+    const { navigate, dispatch } = this.props.navigation;
+
     const resetAction = NavigationActions.reset({
       index: 0,
       actions: [
-        NavigationActions.navigate({ routeName: 'MainView', params: { name } }),
+        NavigationActions.navigate({ routeName: 'MainView', params: { item } }),
       ],
     });
-    this.props.navigation.dispatch(resetAction);
+    dispatch(resetAction);
+    navigate('DeckItem', { item });
   };
 
   render() {
